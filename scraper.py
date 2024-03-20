@@ -14,7 +14,7 @@ def scrape(url, driver):
     proposals = []
 
     # loop through proposals on each page
-    for i in range(1, 10):
+    for i in range(1, 20):
         try:
             header_element = WebDriverWait(driver, timeout).until(
                 EC.presence_of_element_located((By.XPATH, f'/html/body/app-frontend-search-root/section/app-frontend-search-home/div/div/div/div[2]/search-list-layout/div[2]/div/div/sds-search-result-list/div[{i}]/div/app-opportunity-result/div/div[1]/div[1]/div/h3/a'))
@@ -26,7 +26,7 @@ def scrape(url, driver):
             link = header_element.get_attribute("href")
 
             notice_id = WebDriverWait(driver, timeout).until(
-                EC.presence_of_element_located((By.XPATH, f'/html/body/app-frontend-search-root/section/app-frontend-search-home/div/div/div/div[2]/search-list-layout/div[2]/div/div/sds-search-result-list/div[1]/div/app-opportunity-result/div/div[1]/div[2]/h3'))
+                EC.presence_of_element_located((By.XPATH, f'/html/body/app-frontend-search-root/section/app-frontend-search-home/div/div/div/div[2]/search-list-layout/div[2]/div/div/sds-search-result-list/div[{i}]/div/app-opportunity-result/div/div[1]/div[2]/h3'))
             ).text.strip()
 
             date = WebDriverWait(driver, timeout).until(
@@ -37,12 +37,12 @@ def scrape(url, driver):
                 EC.presence_of_element_located((By.XPATH, f'/html/body/app-frontend-search-root/section/app-frontend-search-home/div/div/div/div[2]/search-list-layout/div[2]/div/div/sds-search-result-list/div[{i}]/div/app-opportunity-result/div/div[1]/div[3]/div/p'))
             ).text.strip()
 
-            print(f"{title.upper()}")
-            print(f"{notice_id}")
-            print(f"Date Originally Published: {date}")
-            print(f"Description: {description}")
-            print(f"Link: {link}")
-            print()
+            # print(f"{title.upper()}")
+            # print(f"{notice_id}")
+            # print(f"Date Originally Published: {date}")
+            # print(f"Description: {description}")
+            # print(f"Link: {link}")
+            # print()
 
             proposal = { 
                 "title": title.upper(),
