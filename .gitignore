@@ -1,4 +1,5 @@
 config.py
 proposals.json
+posted_proposals.json
 .venv/
 __pycache__/
