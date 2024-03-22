@@ -48,10 +48,8 @@ def post():
                     json.dump(list(posted_proposals), f)
                     
                 print(f"Posted new proposal: {proposal['title']}")
-                return
 
             except tweepy.TweepyException as e:
                 print(f"Error posting proposal: {proposal['title']}")
                 print(f"Error: {str(e)}")
-                return 
 
