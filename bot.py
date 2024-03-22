@@ -1,14 +1,14 @@
 import json
 import os
-# import tweepy
+import tweepy
 
-# # twitter api credentials
-# from config import consumer_key, consumer_secret, access_token, access_token_secret
+# twitter api credentials
+from config import consumer_key, consumer_secret, access_token, access_token_secret
 
-# # authenticate twitter api
-# auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
-# auth.set_access_token(access_token, access_token_secret)
-# api = tweepy.API(auth)
+# authenticate twitter api
+auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
+auth.set_access_token(access_token, access_token_secret)
+api = tweepy.API(auth)
 
 # post new proposals to twitter
 def post():

@@ -12,12 +12,3 @@ while True:
 
 	post()
 	time.sleep(POSTING_INTERVAL)
-
-# DRIVER FOR TESTING
-# if __name__ == "__main__":
-# 	print("RUNNING APP:\n\n")
-# 	print("SCRAPING:\n")
-# 	scrape()
-# 	print("POSTING:\n")
-# 	post()
-# 	print("\nCOMPLETE")

@@ -12,15 +12,15 @@ def scrape():
     driver = webdriver.Chrome()
 
     # sam.gov search page filtering for DARPA proposals, including both active and inactive status
-    url = "https://sam.gov/search/?index=_all&sort=-modifiedDate&page=1&pageSize=1000&sfm%5BsimpleSearch%5D%5BkeywordRadio%5D=ALL&sfm%5Bstatus%5D%5Bis_active%5D=true&sfm%5Bstatus%5D%5Bis_inactive%5D=true&sfm%5BagencyPicker%5D%5B0%5D%5BorgKey%5D=300000412&sfm%5BagencyPicker%5D%5B0%5D%5BorgText%5D=97AE%20-%20DEFENSE%20ADVANCED%20RESEARCH%20PROJECTS%20AGENCY%20%20(DARPA)&sfm%5BagencyPicker%5D%5B0%5D%5BlevelText%5D=Subtier&sfm%5BagencyPicker%5D%5B0%5D%5Bhighlighted%5D=true"
+    url = "https://sam.gov/search/?index=_all&sort=-modifiedDate&page=1&pageSize=500&sfm%5BsimpleSearch%5D%5BkeywordRadio%5D=ALL&sfm%5Bstatus%5D%5Bis_active%5D=true&sfm%5Bstatus%5D%5Bis_inactive%5D=true&sfm%5BagencyPicker%5D%5B0%5D%5BorgKey%5D=300000412&sfm%5BagencyPicker%5D%5B0%5D%5BorgText%5D=97AE%20-%20DEFENSE%20ADVANCED%20RESEARCH%20PROJECTS%20AGENCY%20%20(DARPA)&sfm%5BagencyPicker%5D%5B0%5D%5BlevelText%5D=Subtier&sfm%5BagencyPicker%5D%5B0%5D%5Bhighlighted%5D=true"
 
     driver.get(url) 
 
     timeout = 10
     proposals = []
 
-    # loop through all 1000 proposals on the search page
-    for i in range(1, 1000): 
+    # loop through all 500 proposals on the search page
+    for i in range(1, 500): 
         try:
             header_element = WebDriverWait(driver, timeout).until(
                 EC.presence_of_element_located((By.XPATH, f'/html/body/app-frontend-search-root/section/app-frontend-search-home/div/div/div/div[2]/search-list-layout/div[2]/div/div/sds-search-result-list/div[{i}]/div/app-opportunity-result/div/div[1]/div[1]/div/h3/a'))
