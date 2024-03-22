@@ -1,4 +1,5 @@
 import json
+from datetime import datetime
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
@@ -16,7 +17,7 @@ def scrape():
 
     driver.get(url) 
 
-    timeout = 10
+    timeout = 5
     proposals = []
 
     # loop through all 50 proposals on the search page
@@ -41,7 +42,7 @@ def scrape():
                 EC.presence_of_element_located((By.XPATH, f'/html/body/app-frontend-search-root/section/app-frontend-search-home/div/div/div/div[2]/search-list-layout/div[2]/div/div/sds-search-result-list/div[{i}]/div/app-opportunity-result/div/div[1]/div[3]/div/p'))
             ).text.strip()
 
-            print(f"Completed scraping proposal {i}...")
+            print(f"{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}: Completed scraping proposal {i}...")
 
             proposal = { 
                 "title": title.upper(),
@@ -56,7 +57,7 @@ def scrape():
 
         # handle timeout when scraping proposal
         except TimeoutException:
-            print(f"Element for proposal {i} not found within the specified timeout")
+            print(f"{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}: Element for proposal {i} not found within the specified timeout")
 
     # save list of scraped proposals to json file
     with open("proposals.json", "w") as f:

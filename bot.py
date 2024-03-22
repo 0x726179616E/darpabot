@@ -1,14 +1,10 @@
 import json
 import os
 import tweepy
+from datetime import datetime
 
 # twitter api credentials
-from config import consumer_key, consumer_secret, bearer_token, access_token, access_token_secret, client_id, client_secret
-
-# authenticate twitter api
-#auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
-#auth.set_access_token(access_token, access_token_secret)
-#api = tweepy.API(auth)
+from config import consumer_key, consumer_secret, bearer_token, access_token, access_token_secret 
 
 client = tweepy.Client(bearer_token=bearer_token, consumer_key=consumer_key, consumer_secret=consumer_secret, access_token=access_token, access_token_secret=access_token_secret)
 
@@ -28,6 +24,7 @@ def post():
 
     # iterate over the proposals and post new ones
     for proposal in proposals:
+        current_time = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
         if proposal["notice_id"] not in posted_proposals:
             first_message = f"{proposal['title']}\n\n{proposal['notice_id']}\n\nPublished Date: {proposal['date']}"
             second_message = f"Description:\n{proposal['description']}\n\nLink: {proposal['link']}"
@@ -47,9 +44,10 @@ def post():
                 with open(posted_proposals_file, "w") as f:
                     json.dump(list(posted_proposals), f)
                     
-                print(f"Posted new proposal: {proposal['title']}")
+                print(f"{current_time}: Posted new proposal: {proposal['title']}")
 
             except tweepy.TweepyException as e:
-                print(f"Error posting proposal: {proposal['title']}")
+                print(f"{current_time}: Error posting proposal: {proposal['title']}")
                 print(f"Error: {str(e)}")
+        else: print(f"{current_time}: No new proposals")
 

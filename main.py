@@ -1,14 +1,16 @@
 import time
+from datetime import datetime
 from bot import post
 from scraper import scrape
 
-SCRAPING_INTERVAL = 12 * 60 * 60 # 12 hours in seconds
-POSTING_INTERVAL = 6 * 60 * 60 # 6 hours in seconds
+TIME_INTERVAL = 8 * 60 * 60 # 8 hours in seconds
 
 # run program indefinitely as a daemon 
 while True:
+	print(f"\n{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}: SCRAPING NOW\n")
 	scrape()
-	time.sleep(SCRAPING_INTERVAL)
 
+	print(f"\n{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}: POSTING NOW\n")
 	post()
-	time.sleep(POSTING_INTERVAL)
+
+	time.sleep(TIME_INTERVAL)
