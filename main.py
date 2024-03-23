@@ -3,7 +3,7 @@ from datetime import datetime
 from bot import post
 from scraper import scrape
 
-TIME_INTERVAL = 8 * 60 * 60 # 8 hours in seconds
+TIME_INTERVAL = 24 * 60 * 60 # 24 hours in seconds
 
 # run program indefinitely as a daemon 
 while True:
