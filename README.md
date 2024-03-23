@@ -1,4 +1,4 @@
 # DARPA Bot  
 
-A bot that posts DARPA proposal requests on twitter: https://twitter.com/darpabot1
+A bot that periodically scrapes and posts DARPA proposal requests: https://twitter.com/darpabot1
 
